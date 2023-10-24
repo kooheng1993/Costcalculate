@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="side-panel">
+            <h2>Default Rate</h2>
+            <table>
+                <tr>
+                    <th>Currency</th>
+                    <th>Rate</th>
+                </tr>
+                <tr>
+                    <td>MYR</td>
+                    <td>1.00</td>
+                </tr>
+                <tr>
+                    <td>SGD</td>
+                    <td>3.40</td>
+                </tr>
+                <tr>
+                    <td>AUD</td>
+                    <td>2.90</td>
+                </tr>
+                <tr>
+                    <td>HKD</td>
+                    <td>0.60</td>
+                </tr>
+                <tr>
+                    <td>CND</td>
+                    <td>3.45</td>
+                </tr>
+                <tr>
+                    <td>USD</td>
+                    <td>4.80</td>
+                </tr>
+            </table>
+        </div>
+        <div class="main-content">
+            <h1>Free Credit Count</h1>
+            <div class="module">
+                <h2>Set Kiosk Currency</h2>
+                <label for="currency">Currency：</label>
+                <select id="currency" onchange="updateRateAndDefaultRate()">
+                    <option value="MYR">MYR</option>
+                    <option value="SGD">SGD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="HKD">HKD</option>
+                    <option value="CND">CND</option>
+                    <option value="USD">USD</option>
+                </select><br><br>
+                <label for="customRate">Custom Rate：</label>
+                <input type="number" id="customRate" step="0.01"><br><br>
+                <label for="rate">Rate：</label>
+                <span id="rate">1.00</span><br><br>
+                <button onclick="updateCustomRate()">Update Rate</button><br><br>
+                <button onclick="resetCustomRate()">Restore Rate</button><br><br>
+            </div>
+            <div class="module">
+                <h2>Free Credit / Kiosk Percentage（%）：</h2>
+                <label for="free">Free：</label>
+                <input type="number" id="free" step="1"><br><br>
+                <label for="percentage">Percentage（%）：</label>
+                <input type="number" id="percentage" step="0.01"><br><br>
+                <button onclick="calculateCost()">Calculate Cost</button><br><br>
+                <p>Cost (MYR)： <span id="cost"></span></p>
+            </div>
+            <div class="module">
+                <h2>Calculate Withdraw Target Credit</h2>
+                <label for="maxWithdrawAmount">Set Max Withdraw：</label>
+                <input type="number" id="maxWithdrawAmount" step="0.01"><br><br>
+                <label for="selectedCurrency">Withdraw Currency：</label>
+                <select id="selectedCurrency">
+                    <option value="MYR">MYR</option>
+                    <option value="SGD">SGD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="HKD">HKD</option>
+                    <option value="CND">CND</option>
+                    <option value="USD">USD</option>
+                </select><br><br>
+                <button onclick="calculateTargetPoints()">计算 Target Points</button><br><br>
+                <p>Max Withdraw： <span id="maxWithdraw"></span></p>
+                <p>Target Credit： <span id="targetPoints"></span></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
