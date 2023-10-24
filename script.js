@@ -5,7 +5,7 @@ function updateRateAndDefaultRate() {
     const defaultRate = getDefaultRate(currency);
     
     if (defaultRate === null) {
-        alert('请选择有效的货币！');
+        alert('Please Select Currency！');
         return;
     }
     
@@ -17,27 +17,27 @@ function updateCustomRate() {
     const customRate = parseFloat(document.getElementById('customRate').value);
     
     if (isNaN(customRate) || customRate <= 0) {
-        alert('请输入有效的汇率！');
+        alert('Please Fill Amount！');
         return;
     }
     
     customRates[currency] = customRate;
     document.getElementById('rate').innerText = customRate.toFixed(2);
-    alert(`自定义汇率已更新：${currency} -> ${customRate}`);
+    alert(`Custom Rate is Updated：${currency} -> ${customRate}`);
 }
 
 function resetCustomRate() {
     const currency = document.getElementById('currency').value;
     
     if (customRates[currency] === undefined) {
-        alert('请选择有效的货币！');
+        alert('Please Select Currency！');
         return;
     }
     
     delete customRates[currency];
     const defaultRate = getDefaultRate(currency);
     document.getElementById('rate').innerText = defaultRate;
-    alert(`自定义汇率已恢复为默认值：${currency} -> ${defaultRate}`);
+    alert(`Currecy Rate Have Restore To Default：${currency} -> ${defaultRate}`);
 }
 
 function getDefaultRate(currency) {
@@ -57,7 +57,7 @@ function calculateCost() {
     const percentage = parseFloat(document.getElementById('percentage').value) / 100;
 
     if (isNaN(free) || isNaN(percentage) || percentage < 0 || percentage > 1) {
-        alert('请输入有效的数字！');
+        alert('Please Fill Number！');
         return;
     }
 
@@ -65,7 +65,7 @@ function calculateCost() {
     const rate = customRates[currency] || getDefaultRate(currency);
 
     if (rate === null) {
-        alert('请选择有效的货币！');
+        alert('Please Choose Currency！');
         return;
     }
 
@@ -79,7 +79,7 @@ function calculateTargetPoints() {
     const selectedCurrency = document.getElementById('selectedCurrency').value;
 
     if (isNaN(maxWithdrawAmount) || maxWithdrawAmount < 0) {
-        alert('请输入有效的最大出款金额！');
+        alert('Please Fill MaxWithdraw Amount！');
         return;
     }
 
@@ -90,7 +90,7 @@ function calculateTargetPoints() {
     const free = parseInt(document.getElementById('free').value);
 
     if (isNaN(percentage_moduleTwo) || percentage_moduleTwo < 0 || percentage_moduleTwo > 1 || isNaN(free)) {
-        alert('请输入有效的百分比和免费积分！');
+        alert('Please Fill Percentage And Free Credit Amount！');
         return;
     }
 
